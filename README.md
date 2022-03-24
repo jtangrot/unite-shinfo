@@ -22,12 +22,12 @@ The data in this repository is the result of querying the PlutoF API (https://ap
 
 Files are available for UNITE version 8.2; sh_general_release_dynamic_04.02.2020.seq2sh.tsv.bz2 containing sequence to SH matchings, and sh_general_release_dynamic_04.02.2020.SHs.tax.bz2 containing SH taxonomies, and for UNITE version 8.3; sh_general_release_dynamic_10.05.2021.seq2sh.tsv.bz2 and sh_general_release_dynamic_10.05.2021.SHs.tax.bz2. All files are tab separated text files compressed with bzip2.
 
-Assignment of species hypothesis to ITS amplicons using this data and the UNITE general FASTA release is available as an optional argument to the nf-core/ampliseq Nextflow workflow from version 2.3: `--addsh` together with `--dada_ref_taxonomy unite-fungi` (https://nf-co.re/ampliseq; Straub et al. 2020).
+Assignment of species hypothesis to ITS amplicons using this data and the UNITE general FASTA release is available as an optional argument to the nf-core/ampliseq Nextflow workflow from version 2.?: `--addsh` together with `--dada_ref_taxonomy unite-fungi` (https://nf-co.re/ampliseq; Straub et al. 2020).
 
 ### Generation of files
 
 After download and file extraction of the UNITE general FASTA release, each sequence name in the fasta file was used as query to PlutoF to find which SH at level 1.5 in release 8 the sequence belongs to, in order to generate the *.seq2sh.tsv files with sequence to SH matchings. Each SH was subsequently used as query to PlutoF to extract the complete taxonomy for the SH, stored in the *.SHs.tax files.
-Two python scripts for automatic querying and generation of the files can be found in the `scripts` folder in the GitHub repo: `https://github.com/biodiversitydata-se/unite-shinfo`. See the accompanying README file for usage information.
+Two python scripts for automatic querying and generation of the files can be found in the `scripts` folder in the GitHub repo: https://github.com/biodiversitydata-se/unite-shinf`. See the accompanying README file for usage information.
 
 
 ## References
