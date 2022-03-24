@@ -27,7 +27,7 @@ Assignment of species hypothesis to ITS amplicons using this data and the UNITE 
 ### Generation of files
 
 After download and file extraction of the UNITE general FASTA release, each sequence name in the fasta file was used as query to PlutoF to find which SH at level 1.5 in release 8 the sequence belongs to, in order to generate the *.seq2sh.tsv files with sequence to SH matchings. Each SH was subsequently used as query to PlutoF to extract the complete taxonomy for the SH, stored in the *.SHs.tax files.
-Two python scripts for automatic querying and generation of the files can be found in the `scripts` folder in the GitHub repo: https://github.com/biodiversitydata-se/unite-shinf`. See the accompanying README file for usage information.
+Two python scripts for automatic querying and generation of the files can be found in the `scripts` folder in the GitHub repo: https://github.com/biodiversitydata-se/unite-shinfo. See the accompanying README file for usage information.
 
 
 ## References
