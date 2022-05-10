@@ -10,7 +10,7 @@ Categories: Microbiology not elsewhere classified, Microbial ecology, Microbial 
 Plant and fungus systematics and taxonomy  
 Item type: Dataset  
 Keywords: ITS, UNITE, PlutoF, SBDI, Ampliseq, Species Hypothesis, SH  
-Funding:  
+Funding: Swedish Research Council (VR), grant number 2019-00242.  
 
 This README file was last updated: 2022-05-10  
 
