@@ -1,10 +1,12 @@
-README.md (3.3kB)
+README.md (4.6kB)
 
+# Files based on UNITE general FASTA release for Fungi
 sh_general_release_dynamic_04.02.2020.seq2sh.tsv.bz2 (395 kB)
 sh_general_release_dynamic_04.02.2020.SHs.tax.bz2 (404kB)
 sh_general_release_dynamic_10.05.2021.seq2sh.tsv.bz2 (486kB)
 sh_general_release_dynamic_10.05.2021.SHs.tax.bz2 (474kB)
 
+# Files based on UNITE general FASTA release for all eukaryotes
 sh_general_release_dynamic_all_04.02.2020.seq2sh.tsv.bz2 (881kB)
 sh_general_release_dynamic_all_04.02.2020.SHs.tax.bz2 (891kB)
 sh_general_release_dynamic_all_10.05.2021.seq2sh.tsv.bz2 (958kB)
