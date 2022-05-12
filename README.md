@@ -18,7 +18,7 @@ Please cite as: Swedish Biodiversity Data Infrastructure (SBDI; 2022). SH inform
 
 ## Dataset description
 
-The data in this repository is the result of querying the PlutoF API (https://api.plutof.ut.ee/public, Abarenkov et al 2010) with all sequence names in the UNITE general FASTA release (https://doi.org/10.15156/BIO/786368; Abarenkov et al. 2020, https://doi.org/10.15156/BIO/1280049; Abarenkov et al. 2021), in order to find the sequence hypothesis (SH) at level 1.5, version 8, for each sequence, resulting in a sequence-to-SH matching file (*.seq2SH.tsv). For each SH, the complete taxonomy is extracted from PlutoF by querying the PlutoF API, and stored in the *.SH.tax files.
+The data in this repository is the result of querying the PlutoF API (https://plutof.docs.apiary.io, Abarenkov et al 2010) with all sequence names in the UNITE general FASTA release (https://doi.org/10.15156/BIO/786368; Abarenkov et al. 2020, https://doi.org/10.15156/BIO/1280049; Abarenkov et al. 2021), in order to find the sequence hypothesis (SH) at level 1.5, version 8, for each sequence, resulting in a sequence-to-SH matching file (*.seq2SH.tsv). For each SH, the complete taxonomy is extracted from PlutoF by querying the PlutoF API, and stored in the *.SH.tax files.
 
 Files are available for UNITE version 8.2; sh_general_release_dynamic_04.02.2020.seq2sh.tsv.bz2 containing sequence to SH matchings, and sh_general_release_dynamic_04.02.2020.SHs.tax.bz2 containing SH taxonomies, and for UNITE version 8.3; sh_general_release_dynamic_10.05.2021.seq2sh.tsv.bz2 and sh_general_release_dynamic_10.05.2021.SHs.tax.bz2. All files are tab separated text files compressed with bzip2.
 
