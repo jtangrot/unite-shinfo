@@ -4,7 +4,7 @@
 
 Author: SBDI molecular data team  
 Contact e-mail: jeanette.tangrot@nbis.se  
-DOI: 10.17044/scilifelab.19411403  
+DOI: 10.17044/scilifelab.19411403.v2
 License: CC BY-SA 4.0  
 Categories: Microbiology not elsewhere classified, Microbial ecology, Microbial genetics,
 Plant and fungus systematics and taxonomy  
@@ -12,7 +12,7 @@ Item type: Dataset
 Keywords: ITS, UNITE, PlutoF, SBDI, Ampliseq, Species Hypothesis, SH  
 Funding: Swedish Research Council (VR), grant number 2019-00242.  
 
-This README file was last updated: 2023-05-22
+This README file was last updated: 2023-05-24
 
 Please cite as: Swedish Biodiversity Data Infrastructure (SBDI; 2023). SH information for UNITE databases. https://doi.org/10.17044/scilifelab.19411403
 
