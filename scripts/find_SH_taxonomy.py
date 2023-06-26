@@ -118,8 +118,16 @@ def query_PlutoF_taxon( taxon ):
     except ValueError:
         sys.exit('Error when querying PlutoF for ' + taxon)
 
-    rank = response.json()['data']['attributes']['rank']
-    name = response.json()['data']['attributes']['name']
+    try:
+        rank = response.json()['data']['attributes']['rank']
+    except KeyError:
+        print( "WARNING: taxon "+ taxon + " has undefined rank", file=sys.stderr, flush=True )
+        rank = ""
+    try:
+        name = response.json()['data']['attributes']['name']
+    except KeyError:
+        print( "WARNING: taxon "+ taxon + " has undefined name", file=sys.stderr, flush=True )
+        name = ""
 
     return [rank.lower(), name] 
 
