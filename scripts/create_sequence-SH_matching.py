@@ -67,7 +67,7 @@ def main():
 
     #---  Read each entry in fasta, find sequence name and query PlutoF, write to file ---#
     fh = open( fasta_in, mode = 'r' )
-    fh_out = open( file_out, mode = 'w' )
+    fh_out = open( file_out, mode = 'w', buffering = 1 )
     for row in fh:
         if row.startswith('>'):
             try:
@@ -81,15 +81,19 @@ def main():
     
 #--- Define functions ---#
 def query_PlutoF(name, sh_id = "1.5", version = "8"):
-    thresholds = {"3": "1", "2": "2", "1": "3", "2.5": "4", "1.5": "5", "0.5": "6"}
-    thresh = thresholds[ sh_id ]
-    query = "q=" + name + "&th=" + thresh + "&v=" + version
+    # The following lines were needed in previous versions of the PlutoF API
+    #thresholds = {"3": "1", "2": "2", "1": "3", "2.5": "4", "1.5": "5", "0.5": "6"}
+    #thresh = thresholds[ sh_id ]
+    #query = "q=" + name + "&th=" + thresh + "&v=" + version
+    # Seems not to matter what version I ask for - always get all versions
+    # Need to loop through to find correct version
+
+    # New query line
+    query = "sequence_accession_nr=" + name + "&threshold=" + sh_id + "&version=" + version
     try:
         response = requests.get( "https://api.plutof.ut.ee/v1/public/dshclusters/search/?" + query ) 
     except ValueError:
         sys.exit('Error when querying PlutoF for ' + name)
-    # Seems not to matter what version I ask for - always get all versions
-    # Need to loop through to find correct version
     # There can be several SHs for the same sequence;
     # loop through all and select the one with no conflict and a value on "designators".
     # Error if many SHs with the same properties (conflict status, designator status)
@@ -139,9 +143,9 @@ def query_PlutoF(name, sh_id = "1.5", version = "8"):
             elif conflict:
                 numSH +=1
     if numSH == 0:
-        print( "WARNING: SH not found for " + name, file=sys.stderr )
+        print( "WARNING: SH not found for " + name, file=sys.stderr, flush = True )
     elif numSH > 1:
-        print( "ERROR: Several \"best\" SHs found for " + name, file=sys.stderr )
+        print( "ERROR: Several \"best\" SHs found for " + name, file=sys.stderr, flush = True )
         SH = ""
         taxon = ""
     return [SH, taxon]

@@ -11,6 +11,7 @@
 #        -o <SHtax.tsv>: Name of file with results
 # Options:
 #        -s <taxons.tsv>: Give a file name if you want to save taxonomy list
+#        -v <version>: SH version. Default: 8
 #
 
 #--- Import libraries, do initializations  ---#
@@ -26,16 +27,18 @@ def main():
                 -o <SHtax.tsv>: Name of results file
                Optional:
                 -s <taxons.tsv>: Give a file name if you want to save taxonomy list
+                -v <version>: SH version. Default: 8
     """
 
     file_in = ""
     file_out = "SHtax.tsv"
     taxfile = ""
     taxontable = {}
+    ver = 8
 
     #--- Read and store command line arguments ---#
     try:
-        opts, args = getopt.getopt(sys.argv[1:],"c:hi:o:s:")
+        opts, args = getopt.getopt(sys.argv[1:],"c:hi:o:s:v:")
     except getopt.GetoptError:
         print( "Usage: " + usage )
         sys.exit(2)
@@ -49,6 +52,8 @@ def main():
             file_out = arg
         elif opt == "-s":
             taxfile = arg
+        elif opt == "-v":
+            ver = arg
 
     if os.path.isfile( file_out ):
         sys.exit('Output file ' + file_out + ' already exists. Please remove or use another name (option -o).')
@@ -62,14 +67,14 @@ def main():
     #---  Read each SH, query PlutoF, fill in taxonomy, write results ---#
     ranks = ['kingdom','phylum','class','order','family','genus','species']
     fh = open( file_in, mode = 'r' )
-    fh_out = open( file_out, mode = 'w' )
+    fh_out = open( file_out, mode = 'w', buffering = 1 )
     for row in fh:
         SH_tax = {}
         SH = row.strip()
         if SH == "": continue
         print( SH, flush=True )
         #--- Find taxon for SH ---#
-        [taxon, name, rank, lineage] = query_PlutoF_taxonForSH( SH )
+        [taxon, name, rank, lineage] = query_PlutoF_taxonForSH( SH, str(ver) )
         if taxon in taxontable:
             if taxontable[ taxon ]['name'] != name or taxontable[ taxon ]['rank'] != rank:
                 sys.exit('taxon ' + taxon + ' have ambigious name and/or rank')
@@ -132,15 +137,20 @@ def query_PlutoF_taxon( taxon ):
     return [rank.lower(), name] 
 
 
-def query_PlutoF_taxonForSH( sh ):
+def query_PlutoF_taxonForSH( sh, ver = "8" ):
     # Query PlutoF for taxon id, rank, name and lineage for a given SH
 
     #--- First find taxon id... ---#
-    query = "name=" + sh
+    query = "name=" + sh + "&version=" + ver
+
     try:
         response = requests.get( "https://api.plutof.ut.ee/v1/public/dshclusters/search/?" + query ) 
     except ValueError:
         sys.exit('Error when querying PlutoF for ' + query)
+    if not response.json()['data']:
+        sys.exit('No entries found when querying PlutoF for ' + sh + ' using version ' + ver)
+
+    taxon = "xxx"
     for data in response.json()['data']:
         if data['attributes']['name'] == sh :
             try:
@@ -153,7 +163,9 @@ def query_PlutoF_taxonForSH( sh ):
             print( "SH name " + data['attributes']['name'] + " is not the same as " + sh , flush=True )
     
     #--- ...then find name, rank and lineage for that taxon ---#
-    if taxon != "":
+    if (taxon == "xxx"):
+        sys.exit('SH ' + sh + ' is not found in version ' + ver ) 
+    if taxon != "" and taxon != "xxx":
         try:
             response = requests.get( "https://api.plutof.ut.ee/v1/public/taxa/" + taxon ) 
         except ValueError:
