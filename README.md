@@ -4,7 +4,7 @@
 
 Author: SBDI molecular data team  
 Contact e-mail: jeanette.tangrot@nbis.se  
-DOI: 10.17044/scilifelab.19411403.v2
+DOI: 10.17044/scilifelab.19411403.v3
 License: CC BY-SA 4.0  
 Categories: Microbiology not elsewhere classified, Microbial ecology, Microbial genetics,
 Plant and fungus systematics and taxonomy  
@@ -12,13 +12,15 @@ Item type: Dataset
 Keywords: ITS, UNITE, PlutoF, SBDI, Ampliseq, Species Hypothesis, SH  
 Funding: Swedish Research Council (VR), grant number 2019-00242.  
 
-This README file was last updated: 2023-05-24
+This README file was last updated: 2024-10-29
 
-Please cite as: Swedish Biodiversity Data Infrastructure (SBDI; 2023). SH information for UNITE databases. https://doi.org/10.17044/scilifelab.19411403.v2
+Please cite as: Swedish Biodiversity Data Infrastructure (SBDI; 2024). SH information for UNITE databases. https://doi.org/10.17044/scilifelab.19411403.v3
 
 ## Dataset description
 
 The data in this repository is the result of querying the PlutoF API (https://plutof.docs.apiary.io, Abarenkov et al 2010) with all sequence names in the UNITE general FASTA release (https://doi.org/10.15156/BIO/2483911; Abarenkov et al. 2022), in order to find the sequence hypothesis (SH) at level 1.5, version 9, for each sequence, resulting in a sequence-to-SH matching file (*.seq2SH.tsv). For each SH, the complete taxonomy is extracted from PlutoF by querying the PlutoF API, and stored in the *.SH.tax files.
+
+NOTE: The files in this version are corrected after fixing the scripts to match updates in the PlutoF API.
 
 Files are available for UNITE version 9.0; sh_general_release_dynamic_29.11.2022.seq2sh.tsv.bz2 containing sequence to SH matchings, and sh_general_release_dynamic_29.11.2022.SHs.tax.bz2 containing SH taxonomies. Corresponding files are also available for the all eukaryotes version of the UNITE database (https://doi.org/10.15156/BIO/2483913; Abarenkov et al 2022b). All files are tab separated text files compressed with bzip2.
 
